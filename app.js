@@ -13,10 +13,8 @@ var parent = document.getElementsByClassName('parent')[0]
 
 
 
-
 var logParent = function (event) {
-  console.log(event.target.value);
-  return pickMe.value = "X";
+  event.target.textContent = "X";
 }
 
 parent.addEventListener('click', logParent)
@@ -25,3 +23,19 @@ parent.addEventListener('click', logParent)
 //   squareBox.textContent = "";
 //   return squareBox.value = onlySolution;
 // })
+
+//-------------this section is for the function of letting you click a box and return a value
+//now for putting an O
+var logParent = function (event) {
+  event.target.textContent = "O";
+}
+
+parent.addEventListener('click', logParent)
+
+// now need a function that will switch between X and O each time
+
+var switchPlayer
+
+var player1
+
+var player2

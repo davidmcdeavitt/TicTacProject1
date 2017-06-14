@@ -6,19 +6,23 @@
   width: 100px;
   display: inline-block;
 }*/
-.container {
+.parent {
   margin: 0 auto;
   height: 300px;
   width: 90%;
   height: 60%;
   position: relative;
   top: 50%;
-  font-size: 0
+  font-size: 2em;
+  /*best to put padding and put font size to be appropriately
+  apply X and O as background so it autofils the area*/
 }
 .tile {
   background-color: black;
   border: 1px solid white;
-  height: 98px;
+  height: 200px;
   width: 30%;
   display: inline-block;
+  overflow: hidden;
 }
+event
