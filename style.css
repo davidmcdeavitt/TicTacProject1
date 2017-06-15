@@ -12,6 +12,7 @@
   width: 90%;
   height: 60%;
   position: relative;
+  color: white;
   top: 50%;
   font-size: 2em;
   /*best to put padding and put font size to be appropriately
@@ -20,9 +21,11 @@
 .tile {
   background-color: black;
   border: 1px solid white;
-  height: 200px;
+  height: 5em;
   width: 30%;
   display: inline-block;
   overflow: hidden;
 }
-event
+body{
+  background-color: black;
+}
