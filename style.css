@@ -29,3 +29,26 @@
 body{
   background-color: black;
 }
+header{
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+.headerLeft {
+  background-color: black;
+  color: white;
+  height: 8em;
+  width: 40%;
+  overflow: hidden;
+  float: left;
+  text-align: center;
+}
+.headerRight {
+  background-color: black;
+  color: white;
+  height: 8em;
+  width: 40%;
+  overflow: hidden;
+  float: right;
+  text-align: center;
+}
