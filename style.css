@@ -6,6 +6,10 @@
   width: 100px;
   display: inline-block;
 }*/
+.reset{
+  position: relative;
+  float: inherit;
+}
 .parent {
   margin: 0 auto;
   height: 300px;
@@ -15,40 +19,48 @@
   color: white;
   top: 50%;
   font-size: 2em;
+  font-family: 'Monoton', cursive;
   /*best to put padding and put font size to be appropriately
   apply X and O as background so it autofils the area*/
 }
 .tile {
-  background-color: black;
-  border: 1px solid white;
-  height: 5em;
+  background-image: -webkit-radial-gradient(30% 30%, closest-corner, #00cbcf, black, rgba(0, 0, 0, 0.11));
+
+  height: 3em;
   width: 30%;
   display: inline-block;
   overflow: hidden;
+  font-stretch: expanded;
 }
 body{
-  background-color: black;
+  background-image: url('https://images5.alphacoders.com/491/thumb-1920-491120.png');
+   width: 100%;
 }
 header{
   overflow: hidden;
   display: inline-block;
   width: 100%;
+  font-family: 'Monoton', cursive;
 }
-.headerLeft {
-  background-color: black;
+#leftScore {
   color: white;
   height: 8em;
   width: 40%;
   overflow: hidden;
   float: left;
-  text-align: center;
+  text-align: left;
 }
-.headerRight {
-  background-color: black;
+#rightScore {
   color: white;
   height: 8em;
   width: 40%;
   overflow: hidden;
   float: right;
-  text-align: center;
+  text-align: left;
+}
+button{
+  background-color: rgb(22, 103, 96);
+  vertical-align: middle;
+  color: white;
+
 }

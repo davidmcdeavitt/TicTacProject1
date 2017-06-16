@@ -1,9 +1,11 @@
 //clic must actually give a function of X
 var onlySolution = "X"
-
+var playerOneWin = 1
+var playerTwoWin = 1
 // a div must be able to be selected
 // first give the div an ability to seen
-
+var balanceP1 = 0
+var balanceP2 = 0
 var pickMe = document.querySelector('div')
 //add the input square
 var squareBox = document.querySelector('tile')
@@ -52,7 +54,15 @@ var playerTwo = 'O'
 var currentPlayer = playerOne
 var downLadder;
 
+var player1Input = document.querySelector('.playerOneTally');
+var player2Input = document.querySelector('.playerTwoTally');
 
+playerOneTallyTotal = function(playerOneWin) {
+  balanceP1 = balanceP1 + playerOneWin;
+}
+playerTwoTallyTotal = function(playerTwoWin) {
+  balanceP2 = balanceP2 + playerTwoWin;
+}
 
 
 
@@ -68,54 +78,42 @@ var downLadder;
 
 var playGame = function(event) {
   //put three comments make move,
-  event.target.textContent = currentPlayer;
+  // legal turn
+  if (event.target.textContent === "") {
+    event.target.textContent = currentPlayer;
+    var dataIndex = +event.target.getAttribute('data-index');
+    board[dataIndex] = currentPlayer
+    totalTally(runWinner(event))
+    if (currentPlayer === playerOne) {
+      currentPlayer = playerTwo
+    }else {
+      currentPlayer = playerOne
+    }
+  }
   // var dataIndex = event.target.getElementById('textArea')
-  var dataIndex = +event.target.getAttribute('data-index');
-  board[dataIndex] = currentPlayer
+
 
 
 //creates the basis for stepladder
 
 
 // check win,
-  runWinner(event)
 
   //switch turn
-  if (currentPlayer === playerOne) {
-    currentPlayer = playerTwo
-  }else {
-    currentPlayer = playerOne
-  }
-
 
 }
-
-//   var playersTurn = function (event) {
-//     event.target.textContent
-// }
-
   parent.addEventListener('click', playGame);
-
-
-
 //function for winner- this needs to be a simplified function
 //main board can be an array... possibly 3 arrays in an array
 //board is an empty array and you would propagate it to
 //when you click a box return information into the array
 //if index 0, 4, 8 all x you need to have a winner
-
-
 //what to use to refer an item to a dataset when you click
 // document.querySelector('div').dataset.index
 // var list = querySelector('parent');
 // document.querySelector('parent').addEventListener('click', function{
 //   console.log('shshshsj');
 // })
-
-
-
-
-
 var runWinner = function(event) {
 
   //for all X functions
@@ -189,7 +187,7 @@ var runWinner = function(event) {
   }
 
   //diagonally down
-  OdownLadder = board.slice(0,9).map(function(letter, index){
+  OdownLadder = board.map(function(letter, index){
       if (letter === "O") {
           return letter
       }
@@ -223,7 +221,7 @@ var runWinner = function(event) {
     trashBucket = OcenterColumn.splice(3,1);
   }
 
-  OrightColumn = board.slice(0,9).map(function(letter, index){
+  OrightColumn = board.map(function(letter, index){
       if (letter === "O") {
           return letter
       }
@@ -247,27 +245,58 @@ var runWinner = function(event) {
       centerColumn.join('') === "XXX"     ||
       rightColumn.join('') === "XXX"
     ) {
-      console.log("Player One Wins!");
+      return playerOne;
   }
   else if(
-      board.slice(0,3).join('') === "OOO" ||
-      board.slice(3,6).join('') === "OOO" ||
-      board.slice(6,9).join('') === "OOO" ||
-      stepLadder.join('') === "OOO"       ||
-      downLadder.join('') === "OOO"       ||
-      //verticle tests
-      leftColumn.join('') === "OOO"       ||
-      centerColumn.join('') === "OOO"     ||
-      rightColumn.join('') === "OOO"
+      board.slice(0,3).join('') === "OOO"   ||
+      board.slice(3,6).join('') === "OOO"   ||
+      board.slice(6,9).join('') === "OOO"   ||
+      OstepLadder.join('') === "OOO"       ||
+      OdownLadder.join('') === "OOO"       ||
+      // verticle tests
+      OleftColumn.join('') === "OOO"       ||
+      OcenterColumn.join('') === "OOO"     ||
+      OrightColumn.join('') === "OOO"
     ) {
-    console.log("Player Two Wins!!!");
+    return playerTwo;
   }
   else {
-      console.log('Draw');
+      console.log("hi");
   }
 
 };
 
+
+
+
+
+function totalTally(result) {
+if (result === playerOne) {
+  playerOne === playerOneWin
+  playerOneTallyTotal(playerOneWin)
+  player1Input.textContent = balanceP1
+}else if (result === playerTwo) {
+  playerTwo === playerTwoWin
+  playerTwoTallyTotal(playerTwoWin)
+  player2Input.textContent = balanceP2
+}else {
+  return
+}
+  //reset game
+}
+
+var resetButton = document.querySelector('button');
+resetButton.addEventListener("click", function () {
+    var tiles = document.squareBox;
+    for(var i = 0; i < 9; i++) {
+        tiles[i].pickme = '';
+    }
+});
+var cleanUp = function() {
+  player1Input.textContent = "";
+  player2Input.textContent = "";
+  return pickme.textContent = "";
+}
 //
 //   else if(document.querySelector('.index0').value === 'X' &&
 //       document.querySelector('.index3').value === 'X' &&
